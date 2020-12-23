@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+    <title>Document</title>
+    <style>
+        .class-name {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        let arr = ['吃饭', '睡觉', '打豆豆']
+        let indexs = 0
+
+        function returnDom () {
+            return arr.map((item, index) => {
+                return (
+                    <p 
+                        key={index} 
+                        onClick={() => {
+                            console.log(item)
+                            indexs = index
+                            render()
+                            // 每次渲染的
+                        }}
+                        style={{color: indexs == index ? 'red' : 'black'}}
+                    >
+                        {index + '-' + item}
+                    </p>
+                )
+            })
+        }
+
+        function render () {
+            // 用函数 return 出来的内容每次都是新的,变量改变时需要重新渲染
+            ReactDOM.render(returnDom(), document.querySelector('#app'))
+        }
+        render()
+    </script>
+</body>
+</html>

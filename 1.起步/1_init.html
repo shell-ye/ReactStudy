@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入依赖 -->
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 创建 DOM 根节点 -->
+    <div id="app"></div>
+
+    <script type="text/babel">
+        // JSX = JS + XML
+        // 优点： 执行效率快，类型安全，编译时能及时发现错误，编写模板更快捷
+        let myDom = <h1>Hello World</h1>
+
+        ReactDOM.render(myDom, document.querySelector('#app'))
+    </script>
+</body>
+</html>
