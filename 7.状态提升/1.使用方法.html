@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class ComponentOne extends React.Component {
+            constructor ( props ) {
+                super( props )
+            }
+
+            render () {
+                return (
+                    <div>
+                        <p>组件一--父组件的值：{ this.props.father }</p>    
+                    </div>
+                )
+            }
+        }
+
+        class ComponentTwo extends React.Component {
+            constructor ( props ) {
+                super( props )
+            }
+
+            render () {
+                return (
+                    <div>
+                        <p>组件二--父组件的值：{ this.props.father }</p>    
+                    </div>
+                )
+            }
+        }
+
+        class ParentComponent extends React.Component {
+            constructor ( props ) {
+                super( props )
+                this.state = {
+                    name: 'father'
+                }
+            }
+
+            changeName = () => {
+                this.setState({
+                    name: 'Parent'
+                })
+            }
+
+            render () {
+                return (
+                    <div>
+                        <p>父组件</p>  
+                        <button onClick={ this.changeName }>父组件改名</button>  
+                        <ComponentOne father={ this.state.name } />
+                        <ComponentTwo father={ this.state.name } />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render( <ParentComponent />, document.querySelector('#app') )
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="parent"></div>
+    <div id="class"></div>
+
+    <script type="text/babel">
+        // 无状态组件
+        function MyComponentOne () {
+            return (
+                <p>我是函数组件</p>
+            )
+        }
+        let renderComponentOne = <MyComponentOne />
+        ReactDOM.render( renderComponentOne, document.querySelector('#app') )
+
+        // 父子组件
+        function ChildrenComponentOne () {
+            return (
+                <div>我是子组件一</div>
+            )
+        }
+
+        function ChildrenComponentTwo () {
+            return (
+                <div>我是子组件二</div>
+            )
+        }
+
+        function PraentComponent () {
+            return (
+                <div>
+                    <ChildrenComponentOne />
+                    <ChildrenComponentTwo />
+                </div>
+            )
+        }
+        
+        ReactDOM.render( <PraentComponent />, document.querySelector('#parent') )
+
+        // 类组件
+        class ClassComponent extends React.Component {
+            render () {
+                return (
+                    <div>
+                        <p>我是类组件</p>
+                        <PraentComponent />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render( <ClassComponent />, document.querySelector('#class') )
+    </script>
+</body>
+</html>

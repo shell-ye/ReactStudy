@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        let info = {
+            name: 'xiaye',
+            age: 21
+        }
+
+        // 方法 1
+        // let reactInfo = Object.keys( info ).map((item, index) => {
+        //     return (
+        //         <p>{ item + '----' + info[item] }</p>
+        //     )
+        // })
+
+        // 方法 2
+        function render () {
+            let arr = []
+            for ( let prop in info ) {
+                console.log(prop)
+                arr.push(
+                    <p>{ prop + '----' + info[prop] }</p>
+                )
+            }
+            return arr
+        }
+        let reactInfo = render()
+
+        ReactDOM.render( reactInfo, document.querySelector('#app') )
+    </script>
+</body>
+</html>

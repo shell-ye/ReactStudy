@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class Component extends React.Component {
+            constructor ( props ) {
+                super( props )
+                this.three = this.three.bind(this)
+            }
+
+            one () {
+                console.log(this)
+            }
+
+            two = () => {
+                console.log(this)
+            }
+
+            three () {
+                console.log(this)
+            }
+
+            four () {
+                console.log(this)
+            }
+
+            render () {
+                return (
+                    <div>
+                        <button onClick={this.one.bind(this)}>第一种方式</button>
+                        <button onClick={this.two}>第二种方式</button>
+                        <button onClick={this.three}>第三种方式</button>
+                        <button onClick={() => { this.four() }}>第四种方式</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render( <Component />, document.querySelector('#app') )
+    </script>
+</body>
+</html>

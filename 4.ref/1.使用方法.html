@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class Component extends React.Component {
+            constructor (props) {
+                super(props)
+                this.refDom = React.createRef()
+            }
+
+            get = () => {
+                console.log(this.refs.button)
+            }
+
+            two = () => {
+                console.log(this.input.value)
+            }
+
+            three = () => {
+                console.log(this.refDom.current)
+            }
+
+            render () {
+                return (
+                    <div>
+                        {/* 1 字符串方法 */}
+                        <button ref="button" onClick={this.get}>第一种方法</button>
+                        {/* 2 回调函数方法，会立刻执行 */}
+                        <input type="text" ref={(el) => {this.input=el}} />
+                        <button onClick={this.two}>第二种方法</button>
+                        {/* . React.createRef() */}
+                        <button ref={this.refDom} onClick={this.three}>第三种方法</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render( <Component />, document.querySelector('#app') )
+    </script>
+</body>
+</html>

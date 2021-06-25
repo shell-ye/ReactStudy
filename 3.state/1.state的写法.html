@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class Component extends React.Component {
+            // 在 ES6 中，不管子组件写不写 constructor，在 new 实例的时候都会补上 constructor
+            // 如果我们写了 constructor 就必须在其中写上 super()
+            // super 就是指向父类的构造方法
+            // 如果想在 constructor 中使用 props，就必须在 super 中写上 props
+            constructor ( props ) {
+                super(  )
+
+                // 定义 state
+                this.state = {
+                    name: '夏叶',
+                    html: '<p>一段html</p>'
+                }
+            }
+
+            changeHanler = () => {
+                this.setState({
+                    name: '异步'
+                }, () => {
+                    console.log('数据已经更新了')
+                })
+            }
+
+            render () {
+                return (
+                    // 使用 state
+                    <div>
+                        <p>我是{ this.state.name }</p>
+                        <button onClick={() => { this.setState({ name: '夏志朋' }) }}>把名字改成夏志朋</button>
+                        <button onClick={ this.changeHanler }>异步操作</button>
+                        <div>{ this.state.html }</div>
+                        <div dangerouslySetInnerHTML={ {__html: this.state.html} }></div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render( <Component />, document.querySelector('#app') )
+    </script>
+</body>
+</html>

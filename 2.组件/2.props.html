@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../node_modules/react/umd/react.development.js"></script>
+    <script src="./../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./../node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="props"></div>
+    <div id="props-class"></div>
+
+    <script type="text/babel">
+        let age = 21
+        let date = {
+            year: 2021,
+            month: 6
+        }
+
+        // 无状态组件
+        function Component ( props ) {
+            return (
+                <div>姓名是：{ props.name }，年龄是：{ props.age }，今年是：{ props.year }年，{ props.month }月</div>
+            )
+        }
+
+        // 设置默认值 （当这个值有的话将会被覆盖）
+        Component.defaultProps = {
+            name: '夏叶'
+        }
+
+        ReactDOM.render( <Component name="夏叶" age={ age } { ...date } />, document.querySelector('#props') )
+
+        // 类组件
+        class ClassComponent extends React.Component {
+            // 设置默认值 （当这个值有的话将会被覆盖）
+            static defaultProps = {
+                name: '夏叶'
+            }
+
+            render () {
+                return (
+                    <div>姓名是：{ this.props.name }，年龄是：{ this.props.age }，今年是：{ this.props.year }年，{ this.props.month }月</div>
+                )
+            }
+        }
+
+        // 设置默认值的第二种写法 （当这个值有的话将会被覆盖）
+        Component.defaultProps = {
+            name: '夏叶'
+        }
+
+        ReactDOM.render( <ClassComponent name="夏叶" age={ age } { ...date } />, document.querySelector('#props-class') )
+    </script>
+</body>
+</html>
