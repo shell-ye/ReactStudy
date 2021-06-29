@@ -5,12 +5,24 @@ import One from './components/One'
 import Two from './components/Two'
 import ImgComponent from './components/Img'
 import Parent from './components/Parent'
+import Hook from './components/Hook'
+import HookObject from './components/HookObject'
+import HookMoreTimes from './components/HookMoreTimes'
 
 import { Route } from 'react-router-dom'
 import FirstPage from './pages/FirstPage'
 import SecondPage from './pages/SecondPage'
 
-function App() {
+import { withRouter, Redirect } from 'react-router-dom'
+
+function App(props) {
+  console.log(props)
+
+  // 监听路由变化
+  props.history.listen(link => {
+    console.log(link)
+  })
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,11 +31,15 @@ function App() {
         <Two />
         <ImgComponent />
         <Parent />
+        <Hook />
+        <HookObject />
+        <HookMoreTimes />
       </header>
-      <Route path="/FirstPage" component={ FirstPage } />
+      <Redirect from="/" to="/FirstPage/123" exact />
+      <Route path="/FirstPage/:id" component={ FirstPage } />
       <Route path="/SecondPage" component={ SecondPage } />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
