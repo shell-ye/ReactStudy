@@ -15,6 +15,8 @@ import SecondPage from './pages/SecondPage'
 
 import { withRouter, Redirect } from 'react-router-dom'
 
+import Reducer from './components/Reducer';
+
 function App(props) {
   console.log(props)
 
@@ -38,6 +40,7 @@ function App(props) {
       <Redirect from="/" to="/FirstPage/123" exact />
       <Route path="/FirstPage/:id" component={ FirstPage } />
       <Route path="/SecondPage" component={ SecondPage } />
+      <Reducer />
     </div>
   );
 }
