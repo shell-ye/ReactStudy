@@ -9,6 +9,21 @@ import Hook from './components/Hook'
 import HookObject from './components/HookObject'
 import HookMoreTimes from './components/HookMoreTimes'
 
+// 组件祖合
+import ComBination from './components/Combination'
+
+// classname 处理样式
+import ClaassNameStyle from './components/ClaassNameStyle'
+
+// styled-componnets 处理样式
+import StyledComponentsStyle from './components/StyledComponentsStyle'
+
+// 事件对象
+import EventObject from './components/EventObject';
+
+// 表单处理
+import Form from './components/Form';
+
 import { Route } from 'react-router-dom'
 import FirstPage from './pages/FirstPage'
 import SecondPage from './pages/SecondPage'
@@ -16,6 +31,7 @@ import SecondPage from './pages/SecondPage'
 import { withRouter, Redirect } from 'react-router-dom'
 
 import Reducer from './components/Reducer';
+import ReactTransitionGroup from './components/ReactTransitionGroup';
 
 function App(props) {
   console.log(props)
@@ -41,6 +57,14 @@ function App(props) {
       <Route path="/FirstPage/:id" component={ FirstPage } />
       <Route path="/SecondPage" component={ SecondPage } />
       <Reducer />
+      <ComBination>
+        <p>组件组合内容</p>
+      </ComBination>
+      <ClaassNameStyle />
+      <StyledComponentsStyle />
+      <EventObject/>
+      <Form/>
+      <ReactTransitionGroup />
     </div>
   );
 }
