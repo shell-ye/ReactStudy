@@ -28,9 +28,14 @@ import { Route } from 'react-router-dom'
 import FirstPage from './pages/FirstPage'
 import SecondPage from './pages/SecondPage'
 
+// flux
+import Flux from './pages/flux'
+
+// reduxNoSplit
+import ReduxNoSplit from './pages/reduxNoSplit'
+
 import { withRouter, Redirect } from 'react-router-dom'
 
-import Reducer from './components/Reducer';
 import ReactTransitionGroup from './components/ReactTransitionGroup';
 
 function App(props) {
@@ -56,7 +61,8 @@ function App(props) {
       <Redirect from="/" to="/FirstPage/123" exact />
       <Route path="/FirstPage/:id" component={ FirstPage } />
       <Route path="/SecondPage" component={ SecondPage } />
-      <Reducer />
+      <Route path="/flux" component={ Flux } />
+      <Route path="/reduxNoSplit" component={ ReduxNoSplit } />
       <ComBination>
         <p>组件组合内容</p>
       </ComBination>

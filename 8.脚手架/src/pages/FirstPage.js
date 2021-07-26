@@ -14,7 +14,19 @@ export default class One extends Component {
                 query: {
                     id: 123
                 }
-            }}>点击前往 Second Page</Link></div>
+            }}>点击前往 Second Page</Link>
+            <Link to={{
+                pathname: '/flux',
+                query: {
+                    id: 123
+                }
+            }}>点击前往 Flux Page</Link>
+            <Link to={{
+                pathname: '/reduxNoSplit',
+                query: {
+                    id: 123
+                }
+            }}>点击前往 reduxNoSplit Page</Link></div>
         )
     }
 }

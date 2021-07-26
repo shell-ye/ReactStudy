@@ -18,6 +18,7 @@
   "homepage": "https://github.com/shell-ye/ReactStudy#readme",
   "dependencies": {
     "babel-standalone": "^6.26.0",
+    "flux": "^4.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
