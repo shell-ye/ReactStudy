@@ -1,0 +1,16 @@
+#shop-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    #basic {
+        width: 600px;
+        .ant-list-item {
+            cursor: pointer;
+            transition: .2s;
+            &:hover {
+                background: #dadada;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+#home-comming {
+    flex: 1;
+    overflow: scroll;
+    ul {
+        li {
+            &.bottom {
+                text-align: center;
+                box-sizing: border-box;
+                padding: 6px;
+                background: #eee;
+            }
+        }
+    }
+}

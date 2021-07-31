@@ -1,3 +1,0 @@
-export const GET_HOT_MOVIES = 'GET_HOT_MOVIES'
-
-export const PUSH_HOT_MOVIES = 'PUSH_HOT_MOVIES'
